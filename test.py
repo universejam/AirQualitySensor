@@ -120,7 +120,7 @@ warmupTime= 0
 # Example of switching the WorkState
 pm25Array=[]
 pm100Array=[]
-i=100
+i=50
 while i>0:
     #print("Measurement "+ str(i)+"\n")
     #print("Warming up sensor for " + str(warmupTime) +" seconds")
@@ -141,15 +141,19 @@ while i>0:
     i-=1
     pm25Array.append(values[1])
     pm100Array.append(values[0])
-print("Plotting data...")
-print("PM100:\n")
-print(pm100Array)
-print("PM2.5")
-print(pm25Array)
+print("Plotting data...\n")
+
+print(str("PM10.0 max: "+str(max(pm100Array))))
+print(str("PM10.0 min: "+str(min(pm100Array))))
+print("\n")
+print(str("PM2.5 max: "+str(max(pm25Array))))
+print(str("PM2.5 min: "+str(min(pm25Array))))
+
+
 
 plt.plot(pm25Array, "ro")
 plt.ylabel("PM2.5")
-
+plt.ylim(ymin=0)
 plt.xlabel("Measurement Number")
 plt.show()
 
